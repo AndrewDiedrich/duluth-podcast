@@ -10,7 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import useSound from 'use-sound';
 import PlayCircleFilledWhiteIcon from '@material-ui/icons/PlayCircleFilledWhite';
 // @ts-ignore
-import fart from '../../../public/sounds/fart-08.mp3';
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -20,22 +20,29 @@ const useStyles = makeStyles({
   },
 });
 
-const ByteCard = () => {
-  const [play] = useSound(fart);
+const ByteCard = (props: {
+  clipPath: string;
+  title: string;
+  description: string;
+}) => {
+  const [play] = useSound(props.clipPath);
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <div onClick={() => play()}>
-          <PlayCircleFilledWhiteIcon />
+          <PlayCircleFilledWhiteIcon
+            style={{ fontSize: 50 }}
+            color="secondary"
+          />
         </div>
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Fart-1
+            {props.title}
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            An echoed strung out fart.
+            {props.description}
           </Typography>
         </CardContent>
       </CardActionArea>
