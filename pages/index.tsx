@@ -19,27 +19,40 @@ const Home = ({ sounds }: { sounds: string[] }) => {
     });
   };
   return (
-    <div className="flex-row-wrap">
-      <ByteCard clipPath={fart} title="Fart" description="Long echoey Fart" />
+    <div>
+      <div className="flex-row">
+        <div className="bp3-input-group bp3-large fill">
+          <span className="bp3-icon bp3-icon-search"></span>
+          <input
+            className="bp3-input"
+            type="search"
+            placeholder="Search input"
+            dir="auto"
+          />
+        </div>
+      </div>
+      <div className="flex-row-wrap">
+        <ByteCard clipPath={fart} title="Fart" description="Long echoey Fart" />
 
-      <ByteCard
-        clipPath={sheSaid}
-        title="That's what She said"
-        description="The Scott Classic"
-      />
+        <ByteCard
+          clipPath={sheSaid}
+          title="That's what She said"
+          description="The Scott Classic"
+        />
 
-      <ByteCard clipPath={dilly} title="Dilly" description="" />
-      <ByteCard clipPath={fart} title="Fart" description="Long echoey Fart" />
+        <ByteCard clipPath={dilly} title="Dilly" description="" />
+        <ByteCard clipPath={fart} title="Fart" description="Long echoey Fart" />
 
-      <footer className={styles.footer}>
-        <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Powered by Gluten
-        </a>
-      </footer>
+        <footer className={styles.footer}>
+          <a
+            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Powered by Gluten
+          </a>
+        </footer>
+      </div>
     </div>
   );
 };

@@ -78,15 +78,6 @@ const Header = ({ currentUser, t }: any) => {
         </Link>
       </NavbarGroup>
       <NavbarGroup align={Alignment.RIGHT}>
-        <div className="bp3-input-group .modifier">
-          <span className="bp3-icon bp3-icon-search"></span>
-          <input
-            className="bp3-input"
-            type="search"
-            placeholder="Search input"
-            dir="auto"
-          />
-        </div>
         {navItems()}
         {currentUser ? (
           <>
