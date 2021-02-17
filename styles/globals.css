@@ -14,3 +14,19 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}

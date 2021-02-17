@@ -1,73 +1,51 @@
-import Head from 'next/head';
-import { Grid } from '@material-ui/core';
-import styles from '../styles/Home.module.css';
-import NavBar from '../src/components/shared/navBar';
-import ByteCard from '../src/components/soundBar/byteCard';
-import React from 'react';
-import { makeStyles, createStyles, Theme } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import Head from "next/head";
+import styles from "../styles/Home.module.css";
+import ByteCard from "../src/components/soundBar/byteCard";
+import React from "react";
 // @ts-ignore
-import fart from '../public/sounds/fart-08.mp3';
+import fart from "../public/sounds/fart-08.mp3";
 // @ts-ignore
-import sheSaid from '../public/sounds/shesaid.mp3';
-const useStyles = makeStyles((theme: Theme) =>
-  createStyles({
-    root: {
-      flexGrow: 1,
-    },
-    paper: {
-      padding: theme.spacing(2),
-      textAlign: 'center',
-      color: theme.palette.text.secondary,
-    },
-  })
-);
-
-export default function Home() {
-  const classes = useStyles();
+import sheSaid from "../public/sounds/shesaid.mp3";
+// @ts-ignore
+import dilly from "../public/sounds/Ba_dum_tss.mp3";
+const Home = ({ sounds }: { sounds: string[] }) => {
+  const renderSoundCards = () => {
+    return sounds.map((sound) => {
+      return (
+        <ByteCard clipPath={sheSaid} title={sound} description={"default"} />
+      );
+    });
+  };
   return (
-    <div className={classes.root}>
-      <NavBar />
-      <Grid
-        container
-        direction="row-reverse"
-        justify="space-between"
-        alignItems="center"
-      >
-        <Grid item md={4}>
-          <ByteCard
-            clipPath={fart}
-            title="Fart"
-            description="Long echoey Fart"
-          />
-        </Grid>
+    <div className="flex-row-wrap">
+      <ByteCard clipPath={fart} title="Fart" description="Long echoey Fart" />
 
-        <Grid item md={4}>
-          {' '}
-          <ByteCard
-            clipPath={sheSaid}
-            title="That's what She said"
-            description="The Scott Classic"
-          />
-        </Grid>
-        <Grid item md={4}>
-          <ByteCard
-            clipPath={fart}
-            title="Fart"
-            description="Long echoey Fart"
-          />
-        </Grid>
+      <ByteCard
+        clipPath={sheSaid}
+        title="That's what She said"
+        description="The Scott Classic"
+      />
 
-        <footer className={styles.footer}>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Powered by Gluten
-          </a>
-        </footer>
-      </Grid>
+      <ByteCard clipPath={dilly} title="Dilly" description="" />
+      <ByteCard clipPath={fart} title="Fart" description="Long echoey Fart" />
+
+      <footer className={styles.footer}>
+        <a
+          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Powered by Gluten
+        </a>
+      </footer>
     </div>
   );
-}
+};
+
+Home.getInitialProps = async (appContext) => {
+  const { ctx } = appContext;
+  let sounds = [];
+  return sounds;
+};
+
+export default Home;
