@@ -2,6 +2,8 @@ import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import ByteCard from "../src/components/soundBar/byteCard";
 import React from "react";
+import fs from "fs";
+import path from "path";
 // @ts-ignore
 import fart from "../public/sounds/fart-08.mp3";
 // @ts-ignore
@@ -42,10 +44,12 @@ const Home = ({ sounds }: { sounds: string[] }) => {
   );
 };
 
-Home.getInitialProps = async (appContext) => {
-  const { ctx } = appContext;
-  let sounds = [];
-  return sounds;
+// ssr
+export const getServerSideProps = async () => {
+  const postsDirectory = path.join(process.cwd(), "./public/sounds/");
+  const sounds = fs.readdirSync(postsDirectory);
+  console.log(sounds);
+  return { props: { sounds } };
 };
 
 export default Home;
