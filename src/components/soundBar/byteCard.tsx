@@ -1,57 +1,38 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
-import CardActionArea from "@material-ui/core/CardActionArea";
-import CardActions from "@material-ui/core/CardActions";
-import CardContent from "@material-ui/core/CardContent";
-import CardMedia from "@material-ui/core/CardMedia";
-import Button from "@material-ui/core/Button";
-import Typography from "@material-ui/core/Typography";
 import useSound from "use-sound";
-import { Icon, Intent } from "@blueprintjs/core";
-// @ts-ignore
+import { Icon, Intent, Card, H3 } from "@blueprintjs/core";
 
-const useStyles = makeStyles({
-  root: {
-    maxWidth: 345,
-  },
-  media: {
-    height: 140,
-  },
-});
+// @ts-ignore
+// import Sound from "s../../../public/sounds/Ba_dum_tss.mp3";
+
+// const importSound = (clipPath) => {
+//   const sound = import(`../../../public/sounds/${clipPath}`);
+//   return sound;
+// };
 
 const ByteCard = (props: {
   clipPath: string;
   title: string;
   description: string;
 }) => {
-  const [play] = useSound(props.clipPath);
-  const classes = useStyles();
+  const [play] = useSound(`/sounds/${props.clipPath}`);
 
   return (
     <div>
-      <Card className={classes.root}>
-        <CardActionArea>
-          <div onClick={() => play()}>
-            <Icon iconSize={32} icon="play" intent={Intent.DANGER} />
-          </div>
-          <CardContent>
-            <Typography gutterBottom variant="h5" component="h2">
-              {props.title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {props.description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-        <CardActions>
-          <Button size="small" color="primary">
-            Share
-          </Button>
-          <Button size="small" color="primary">
-            Learn More
-          </Button>
-        </CardActions>
+      <Card
+        interactive
+        style={{ width: "300px", height: "150px", margin: "8px" }}
+        onClick={() => play()}
+      >
+        <Icon
+          style={{ margin: "5px" }}
+          iconSize={32}
+          icon="play"
+          intent={Intent.SUCCESS}
+        />
+        <div>
+          <H3>{props.title}</H3>
+        </div>
       </Card>
     </div>
   );

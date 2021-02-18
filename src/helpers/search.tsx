@@ -3,7 +3,7 @@ export const searchArray = (
   searchString: string
 ): Array<any> => {
   let substring = searchString;
-  if (searchString === "" || searchString === "filter") {
+  if (searchString === "" || searchString === "search") {
     return list;
   } else {
     let filteredData = list.filter((item) =>

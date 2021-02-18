@@ -74,11 +74,12 @@ const Header = ({ currentUser, t }: any) => {
         <Link href={"/"}>
           <NavbarHeading>
             <Icon icon="tree" iconSize={24} />
+            The Lions Den
           </NavbarHeading>
         </Link>
       </NavbarGroup>
       <NavbarGroup align={Alignment.RIGHT}>
-        {navItems()}
+        {/* {navItems()} */}
         {currentUser ? (
           <>
             <NavbarDivider />
